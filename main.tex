@@ -1,7 +1,8 @@
 \documentclass{article}
 \usepackage{graphicx, babel} % Required for inserting images
 \usepackage{hyperref}
-
+\usepackage{geometry}
+\geometry{top=1cm, bottom=2cm, left=2cm, right=2cm}
 
 \title{Algorytmy hashujące}
 \author{Krzysztof Sławek 72902}
@@ -15,7 +16,8 @@
 
 Problem, który postaram sie przybliżyc to temat związany z algorytmami hashowania.
 Najpierw zacznę od przedstawienia czym jest hashowanie.
-
+\\
+\\
 Hashowanie to generowanie ciagu znakow o stałej długości na podstawie danych wejściowych o dowolnej wielkości. Wyniekiem takieog hashowania jest losowy ciag znaków, który w przypadku tych samych danych wejsciowych generuje identyczny ciąg znaków zwany hashem. Najmniejsza zmiana w danych wejściowych zmienia hash. 
 Hashowanie jest procesem nieodwracalnym co w praktyce znaczy, że nie możemy odtworzyć z hasha danych, które były użyte na wejściu.
 
@@ -35,11 +37,60 @@ Hashowanie jest procesem nieodwracalnym co w praktyce znaczy, że nie możemy od
     \item Utrzymywanie integralności danych w blockchainie.
 \end{itemize}
 
+\newpage
 \section{Przykłady algorytmów hashujących}
 
+\begin{enumerate}
+    \item MD5 (Message Digest Algorithm 5)
+    \begin{itemize}
+        \item[]Do czego są najczęściej wykorzystywane: MD5 był kiedyś używany do bezpiecznego przechowywania haseł, weryfikacji integralności plików i innych zastosowań, ale ze względu na swoje słabości kryptograficzne nie jest już zalecany do tych celów.
+        \\
+        \item[] Jak działają: MD5 operuje na wiadomościach o zmiennej długości i zwraca 128-bitowy skrót (32 znaki szesnastkowe). Algorytm ten wykonuje szereg przekształceń na blokach danych wejściowych, w wyniku czego powstaje skrót. 
+        \\
+        \item[] Złożoność czasowa: $O(n)$, gdzie $n$ to długość danych wejściowych.
+    \end{itemize}
+    
+    \item SHA-256 (Secure Hash Algorithm 256-bit)
+    \begin{itemize}
+        \item[] Do czego są najczęściej wykorzystywane: SHA-256 jest powszechnie stosowany do weryfikacji integralności danych, generowania kluczy kryptograficznych, podpisywania cyfrowego i innych zastosowań wymagających bezpiecznej funkcji haszującej.
+        \\
+        \item[] Jak działają: SHA-256 operuje na blokach danych o długości 512-bitów i zwraca 256-bitowy skrót. Działa poprzez stosowanie serii przekształceń bitowych na danych wejściowych.
+        \\
+        \item[] Złożoność czasowa: $O(n)$, gdzie $n$ to długość danych wejściowych.
+    \end{itemize}
+    
+    \item BCrypt
+    \begin{itemize}
+        \item[]Do czego są najczęściej wykorzystywane: BCrypt jest powszechnie używany do bezpiecznego przechowywania haseł w bazach danych.
+        \\
+        \item[] Jak działają: BCrypt jest oparty na funkcji haszującej Blowfish. Generuje unikalną sól dla każdego hasła i wykonuje szereg iteracji, co sprawia, że jest bardziej odporny na ataki brute force. 
+        \\
+        \item[] Złożoność czasowa: Zależna od liczby rund algorytmu BCrypt.
+        Typowo $O(2^{cost})$, gdzie $cost$ to parametr określający liczbę rund.
+    \end{itemize}
+    
+    \item SHA-3 (Secure Hash Algorithm 3)
+    \begin{itemize}
+        \item[] Do czego są najczęściej wykorzystywane: SHA-3 jest używany do weryfikacji integralności danych, generowania skrótów i innych zastosowań, gdzie wymagana jest bezpieczna funkcja haszująca.
+        \\
+        \item[] Jak działają: SHA-3 operuje na blokach danych i zwraca skrót o określonej długości. Jest oparty na innych zasadach niż starsze wersje SHA, co sprawia, że jest bardziej oporny na niektóre ataki kryptoanalizy.
+        \\
+        \item[] Złożoność czasowa: $O(n)$, gdzie $n$ to długość danych wejściowych.
+    \end{itemize}
+    
+    \item Argon2
+    \begin{itemize}
+        \item[] Do czego są najczęściej wykorzystywane: Argon2 jest specjalnie zaprojektowany do przechowywania haseł i jest uznawany za jeden z najbezpieczniejszych algorytmów haszujących.
+        \\
+        \item[] Jak działają: Argon2 wykorzystuje dużą ilość pamięci i czasu obliczeń, co sprawia, że jest bardzo oporny na ataki brute force.
+        \\
+        \item[] Złożoność czasowa: Zależna od parametrów,
+        w tym pamięci wykorzystanej przez algorytm.
+        Typowo $O(m \cdot t)$, gdzie $m$ to ilość zużytej pamięci, a $t$ to liczba iteracji.
+    \end{itemize}
+\end{enumerate}
 
-
-
+\newpage
 \section{Odnośniki do materiałów}
 \begin{itemize}
     \item \url{https://www.okta.com/identity-101/hashing-algorithms/}
@@ -47,6 +98,10 @@ Hashowanie jest procesem nieodwracalnym co w praktyce znaczy, że nie możemy od
     \item \url{https://en.wikipedia.org/wiki/MD5}
     \item \url{https://chainkraft.com/pl/co-to-jest-hashowanie/}
     \item \url{https://en.wikipedia.org/wiki/Merkle%E2%80%93Damg%C3%A5rd_construction}
+    \item \url{https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf}
+    \item \url{https://en.wikipedia.org/wiki/Bcrypt}
+    \item \url{https://datatracker.ietf.org/doc/rfc9106/}
+    \item \url{https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf}
 \end{itemize}
 
 
