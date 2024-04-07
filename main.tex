@@ -11,14 +11,28 @@
 \maketitle
 
 \section{Wstep}
+
 Problem, który postaram sie przybliżyc to temat związany z algorytmami hashowania.
 Najpierw zacznę od przedstawienia czym jest hashowanie.
 
 Hashowanie to generowanie ciagu znakow o stałej długości na podstawie danych wejściowych o dowolnej wielkości. Wyniekiem takieog hashowania jest losowy ciag znaków, który w przypadku tych samych danych wejsciowych generuje identyczny ciąg znaków zwany hashem. Najmniejsza zmiana w danych wejściowych zmienia hash. 
 Hashowanie jest procesem nieodwracalnym co w praktyce znaczy, że nie możemy odtworzyć z hasha danych, które były użyte na wejściu.
 
-\section{Przykąłdy zastosowań algorytmów hashujących}
+\section{Przykłady zastosowań algorytmów hashujących}
 
+\begin{itemize}
+    \item Bezpieczne przechowywanie haseł użytkowników w bazach danych.
+    \item Weryfikacja integralności danych w transmisji 
+    (np. w protokołach bezpieczeństwa internetowego, takich jak TLS/SSL).
+    \item Generowanie unikalnych identyfikatorów dla plików (np. kontrola wersji, kontrola integralności plików).
+    \item Zabezpieczanie danych w systemach autoryzacji i uwierzytelniania.
+    \item Weryfikacja autentyczności dokumentów (np. cyfrowe podpisy).
+    \item Bezpieczne przechowywanie kluczy kryptograficznych.
+    \item Generowanie skrótów dla danych w celu szybkiego porównywania (np. w bazach danych lub strukturach danych).
+    \item Zabezpieczanie haseł w aplikacjach mobilnych i serwisach internetowych.
+    \item Zapobieganie podstawianiu plików (ang. file spoofing) przez sprawdzanie ich skrótów.
+    \item Utrzymywanie integralności danych w blockchainie.
+\end{itemize}
 
 \section{Przykłady algorytmów hashujących}
 
